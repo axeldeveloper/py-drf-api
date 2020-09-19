@@ -36,8 +36,8 @@ urlpatterns = [
 
     #path('contatos/', views.ContatoList.as_view(), name='contatos-list'),
     #path('contatos/<int:id>', views.ContatoById.as_view(), name='contatos-edit'),
-
-    path('welcome/', contato_views.welcome, name='welcome' ),
+    path('/home',    contato_views.home_page, name='home'),
+    path('welcome/', contato_views.welcome,   name='welcome' ),
     
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))

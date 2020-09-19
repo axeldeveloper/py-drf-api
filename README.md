@@ -43,6 +43,11 @@
 # Run and teste
 
     > python manage.py runserver
+    > DJANGO_SETTINGS_MODULE=<your_app_name>.settings_dev python3 manage.py runserver
+
+    . .env
+    ./manage.py makemigrations --settings=djangoproject.settings.development
+    ./manage.py migrate --settings=djangoproject.settings.developmen
 
 # Dependencies 
 
@@ -65,3 +70,21 @@
 
 
 # test TDD 
+## Create your folder tests here.
+    $ py.test -v          `or`
+    $ pytest -v           `or`
+    $ pytest -m slow      `or`
+    $ py.test -q ./api/test_example.py
+    $ pytest ./api/test_example.py -v
+    $ pipenv run pytest   `or`
+    $ ./manage.py test tests.test_models.ContatoTest  --verbosity 2
+    $ ./manage.py test tests.test_models --verbosity 2
+    $ ./manage.py test tests.test_models.ContatoTest.test_contato_select_nome
+    $ ./manage.py test app.contato.tests.test_models.ContatoTest
+    $ PYTHONDONTWRITEBYTECODE=1 python -m pytest -p no:cacheprovider
+    $ pipenv run pytest --ds=app.test_settings
+
+
+# urls
+# http://localhost:8000/contatos/
+https://realpython.com/testing-in-django-part-1-best-practices-and-examples/

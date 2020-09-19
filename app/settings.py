@@ -86,6 +86,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+   
+    }
+}
+
+DATABASES_TEST = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        'TEST': BASE_DIR / 'test.db.sqlite3'
     }
 }
 
@@ -127,3 +136,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+TEST_LOCAL_PY_OVERWRITING = "yes"
+
+AUTH_USER_MODEL = "auth.User"
