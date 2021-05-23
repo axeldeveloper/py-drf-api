@@ -10,6 +10,7 @@ pylint = "*"
 django = "*"
 djangorestframework = "*"
 pytest = "*"
+coverage = "*"
 
 [requires]
 python_version = "3.6"

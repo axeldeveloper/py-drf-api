@@ -104,3 +104,10 @@ target/
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover

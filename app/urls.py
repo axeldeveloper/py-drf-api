@@ -13,17 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from api import views
+from api.serializers import ContatoSerializer
 from django.contrib import admin
-from django.urls import path
-
 from django.urls import include, path
 from rest_framework import routers
 
-from api import views
-
 from app.contato import views as contato_views
- 
-from api.serializers import  ContatoSerializer
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -37,7 +33,8 @@ urlpatterns = [
     #path('contatos/', views.ContatoList.as_view(), name='contatos-list'),
     #path('contatos/<int:id>', views.ContatoById.as_view(), name='contatos-edit'),
     path('/home',    contato_views.home_page, name='home'),
-    path('welcome/', contato_views.welcome,   name='welcome' ),
+    path('welcome/', contato_views.welcome,   name='welcome'),
+    path('foo/',     contato_views.foo,       name='foo'),
     
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
