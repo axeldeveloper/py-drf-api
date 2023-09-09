@@ -1,6 +1,7 @@
 from django.db import models
 
 from django.urls import reverse
+# Create your models here.
 
 from django.core.exceptions  import ValidationError
 
@@ -9,6 +10,8 @@ class Contato(models.Model):
     class Meta:
         db_table = 'contato'
         ordering = ['-id']
+        app_label  = 'contato'
+
         #paginate_by = 10
 
     nome     = models.CharField(max_length=200, blank=True)

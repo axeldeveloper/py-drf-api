@@ -1,0 +1,33 @@
+# Testing
+# ------------------------------------------------------------------------------
+mypy==1.4.1
+django-stubs[compatible-mypy]==4.2.3
+pytest==7.4.0
+pytest-sugar==0.9.7
+djangorestframework-stubs[compatible-mypy]==3.14.2
+pytest-django==4.5.2 
+
+
+# Code quality
+# ------------------------------------------------------------------------------
+flake8==6.1.0 
+flake8-isort==6.0.0
+coverage==7.3.0 
+black==23.7.0 
+djlint==1.32.1
+pylint-django==2.5.3
+
+# Django
+# ------------------------------------------------------------------------------
+factory-boy==3.3.0
+
+# Django
+# ------------------------------------------------------------------------------
+django==4.2.4
+django-environ==0.10.0 
+# Django REST Framework
+djangorestframework==3.14.0
+django-cors-headers==4.2.0
+# DRF-spectacular for api documentation
+drf-spectacular==0.26.4  
+# https://github.com/tfranzel/drf-spectacular

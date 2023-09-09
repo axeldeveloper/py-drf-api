@@ -1,18 +1,12 @@
-
-
-import unittest
 from http import HTTPStatus
-
-from api.models import Contato
-from app.contato import views as contato_views
 from django.http import HttpRequest
 from django.test import Client, TestCase
 from django.urls import resolve, reverse
 from rest_framework import routers
+from contato.models import Contato
+from contato.views import home_page
 
 client = Client()
-
-
 
 class UrlTest(TestCase):
     
@@ -24,7 +18,7 @@ class UrlTest(TestCase):
     def test_home_page_context_html(self):
         """ TEST PAGE HOME CONTEXT HTML """
         request = HttpRequest()  
-        response = contato_views.home_page(request)  
+        response = home_page(request)  
         html = response.content.decode('utf8')  
         self.assertTrue(html.startswith('<html>'))  
         self.assertIn('<title>Minha Pagina</title>', html)  
@@ -58,10 +52,9 @@ class UrlTest(TestCase):
 
     def test_get_json_for_foo(self):
         """ TEST PAGE FOO JSON """
-        ##resp = self.api_client.get('/foo', format='json')
-        ##self.assertValidJSONResponse(resp)
-        response = client.get('/foo',  format='json')
+        response = client.get('/foo/',  format='json')
         assert response.status_code == HTTPStatus.OK
+ 
     
     #def test_title_starting_lowercase(self):
     #    response = self.client.post(

@@ -1,26 +1,18 @@
 import pytest
-import unittest
+
 from django.test import TestCase
 from django.urls import reverse
-from django.test import Client
-from django.conf import settings
 
-from django.db import connection
-from api.models import Contato
 from django.core.exceptions import ValidationError
-from http import HTTPStatus
-from django.utils import timezone
-
-#from django.core.urlresolvers import reverse
-
+from django.db import connection
+from app import settings
+from contato.models import Contato
 #import sys, os
 #myPath = os.path.dirname(os.path.abspath(__file__))
 #sys.path.insert(0, myPath + '/../')
 #sys.path.insert(0, myPath + './../api/models.py')
 
 
-
-client = Client()
 
 #original_db_name = settings.DATABASES["default"]["NAME"]
 

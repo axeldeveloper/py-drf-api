@@ -14,7 +14,7 @@ def welcome(request):
     return JsonResponse(content)
 
 @api_view(['GET'])
-def foo():
+def foo(request):
     return JsonResponse({'foo':'bar'})
 
 

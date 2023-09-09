@@ -18,8 +18,9 @@ from api.serializers import ContatoSerializer
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
+from contato import views as contato_views
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
-from app.contato import views as contato_views
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -27,15 +28,17 @@ router.register(r'groups', views.GroupViewSet)
 router.register(r'contatos', views.ContatoViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    #url(r'^musics/$', views.MusicList.as_view(), name='music-list'),
-
-    #path('contatos/', views.ContatoList.as_view(), name='contatos-list'),
-    #path('contatos/<int:id>', views.ContatoById.as_view(), name='contatos-edit'),
-    path('/home',    contato_views.home_page, name='home'),
+     # YOUR PATTERNS
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    # Optional UI:
+    path('api/swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    path('home/',    contato_views.home_page, name='home'),
     path('welcome/', contato_views.welcome,   name='welcome'),
     path('foo/',     contato_views.foo,       name='foo'),
     
+    
+    path('admin/', admin.site.urls),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

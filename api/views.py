@@ -10,12 +10,13 @@ from rest_framework import viewsets , generics , status
 from rest_framework import permissions
 from api.serializers import UserSerializer, GroupSerializer
 
-from  api.models import Contato
 from  api.serializers import  ContatoSerializer
 import json
 
 from rest_framework.decorators import api_view
 from django.http import JsonResponse
+
+from contato.models import Contato
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -43,13 +44,10 @@ class ContatoViewSet(viewsets.ModelViewSet):
     serializer_class = ContatoSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-
-
 class ContatoList(generics.ListCreateAPIView):
 
     queryset = Contato.objects.all()
     serializer_class = ContatoSerializer
-
 
 class ContatoById(generics.ListCreateAPIView):
     # queryset = Contato.objects.get(pk=self.kwargs['id'])
