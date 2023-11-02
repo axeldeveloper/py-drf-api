@@ -17,7 +17,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 #BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -26,8 +25,10 @@ SECRET_KEY = '2al!lde9g4w1#y&196k@px*)wwbn2=9x^+eh5nw_4d8l(#=*tk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
 
-ALLOWED_HOSTS = []
+INTERNAL_IPS = ["127.0.0.1", "10.0.2.2"]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
@@ -56,6 +57,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',  # noqa: F405
+    'django_extensions',  # noqa: F405
     'contato',
     'api',
     'rest_framework',
@@ -70,6 +73,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -113,22 +117,20 @@ DATABASES_TEST = {
 }
 
 
+if DEBUG:
+    import socket  # only if you haven't already imported this
+    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+    INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + ["127.0.0.1", "10.0.2.2"]
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
 ]
 
 

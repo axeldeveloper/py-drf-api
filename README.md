@@ -1,4 +1,5 @@
-# Project
+# Project  - Django REST API
+
     Django
     Django Rest
     sqlite
@@ -12,9 +13,14 @@ $ source ven311/bin/activate
 $ pip install -r requirements.txt
 
 ```
+# Dependencies
+    pipenv
+    Django
+    pip install djangorestframework
 
-## using pyenv
-pyenv shell 3.8.17
+
+## Using pyenv
+    pyenv shell 3.8.17
 
 
 
@@ -46,34 +52,27 @@ $ python manage.py migrate --fake-initial
 ```
 
 # Run and teste
-```sh 
+```sh
+# run
 $ python manage.py runserver
-$ python DJANGO_SETTINGS_MODULE=<your_app_name>.settings_dev python manage.py runserver
+
+# run set setting
+$ python DJANGO_SETTINGS_MODULE=<your_app_name>.settings_dev python manage.py runserver 
+
 . .env
-./manage.py makemigrations --settings=djangoproject.settings.development
-./manage.py migrate --settings=djangoproject.settings.developmen
+
+$ python manage.py makemigrations --settings=djangoproject.settings.development
+
+$ python manage.py migrate --settings=djangoproject.settings.developmen
 ```
-
-# Dependencies
-
-    pipenv
-    Django
-    pip install djangorestframework
-
-# out after pipenv shell
-
-    ✔ Successfully created virtual environment!
-    Virtualenv location: /home/axel/.local/share/virtualenvs/app-drf-api-g3fTGEph
-    Creating a Pipfile for this project…
-    Launching subshell in virtual environment…
-    . /home/axel/.local/share/virtualenvs/app-drf-api-g3fTGEph/bin/activate
 
 # Activate virtual environment
 
     pipenv shell
     source /home/axel/.local/share/virtualenvs/app-drf-api-g3fTGEph/bin/activate
 
-# test TDD
+
+# Test TDD
 
 ## Create your folder tests here.
 ```sh
@@ -96,8 +95,8 @@ $ ./manage.py test tests.test_url.UrlTest
 $ coverage run --source='.' ./manage.py test tests.test_url.UrlTest --verbosity 2
 $ coverage run  ./manage.py test tests.test_url.UrlTest
 ```
+
+
 # urls
-
-
 
 https://realpython.com/testing-in-django-part-1-best-practices-and-examples/

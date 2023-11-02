@@ -28,6 +28,8 @@ router.register(r'groups', views.GroupViewSet)
 router.register(r'contatos', views.ContatoViewSet)
 
 urlpatterns = [
+    
+    path("__debug__/", include("debug_toolbar.urls")),
      # YOUR PATTERNS
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     # Optional UI:
