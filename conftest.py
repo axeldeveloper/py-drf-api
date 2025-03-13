@@ -1,5 +1,7 @@
 import pytest
 
+from app import settings
+
 
 @pytest.fixture(scope='session')
 def django_db_setup():

@@ -3,13 +3,13 @@
     Django
     Django Rest
     sqlite
-    python 3.8 or 3.11
+    python 3.11
 
 
 # Create project local
 ```sh 
-$ python -m venv ven311
-$ source ven311/bin/activate
+$ python -m venv venv311
+$ source venv311/bin/activate
 $ pip install -r requirements.txt
 
 ```

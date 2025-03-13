@@ -3,33 +3,33 @@ from django.db import models
 from django.urls import reverse
 # Create your models here.
 
-from django.core.exceptions  import ValidationError
+from django.core.exceptions import ValidationError
+
 
 class Contato(models.Model):
-
     class Meta:
         db_table = 'contato'
         ordering = ['-id']
-        app_label  = 'contato'
+        app_label = 'contato'
 
         #paginate_by = 10
 
-    nome     = models.CharField(max_length=200, blank=True)
+    nome = models.CharField(max_length=200, blank=True)
     telefone = models.CharField(max_length=200)
-    email    = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
 
     def get_absolute_url(self):
         return reverse('contato-detail', args=[str(self.id)])
 
     def clean(self):
         # and self.website is None
-        
+
         if self.nome == None and self.nome == "":
             raise ValidationError({
                 'nome': "Nome obrigatório"
             })
-        
-        if self.email == 'example@mail.com' :
+
+        if self.email == 'example@mail.com':
             raise ValidationError({
                 'email': "E-mail invalido"
             })
